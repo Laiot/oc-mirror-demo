@@ -6,15 +6,15 @@
 3. Install the oc-mirror CLI plugin by placing the file in your PATH and adjust the permission mode to make it executable.
 4. Login to the Red Hat registry: \
 `$ podman login registry.redhat.io`
-5. Create an ImageSetConfiguration manifest:
+5. Create an ImageSetConfiguration manifest: \
 `$ oc mirror init --registry quay.io/csarta/oc-mirror-metadata > imageset-config.yaml`
 6. Add to the ImageSetConfiguration the images you want to make available for your registry. You can find some samples here: https://docs.openshift.com/container-platform/4.12/installing/disconnected_install/installing-mirroring-disconnected.html#oc-mirror-image-set-examples_installing-mirroring-disconnected
-7. Generate the needed manifest to apply in your cluster:
+7. Generate the needed manifest to apply in your cluster: \
 `$ oc mirror --config=imageset-config.yaml file://mirror`
-8. Apply the YAML files from the results directory to the cluster:
+8. Apply the YAML files from the results directory to the cluster: \
 `$ oc apply -f ./oc-mirror-workspace/results-[...]/`
-9. Verify that the ImageContentSourcePolicy and CatalogSource resources were successfully installed:
-`$ oc get imagecontentsourcepolicy --all-namespaces`
+9. Verify that the ImageContentSourcePolicy and CatalogSource resources were successfully installed: \
+`$ oc get imagecontentsourcepolicy --all-namespaces` \
 `$ oc get catalogsource --all-namespaces`
 
 Here's a sample of the generated folder with all the needed manifest, for reference:
